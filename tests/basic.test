@@ -1,0 +1,66 @@
+# basic.test --
+#
+# Basic tests for tclssh2 package
+#
+# Copyright (c) 2025 tclssh2 project
+# All rights reserved.
+
+if {[lsearch [namespace children] ::tcltest] == -1} {
+    package require tcltest
+    namespace import ::tcltest::*
+}
+
+#-------------------------------------------------------------------------------
+# Load the package
+#-------------------------------------------------------------------------------
+
+test load-ssh2-1.0 {Load ssh2 package} -body {
+    package require ssh2
+} -result {*} -match glob
+
+#-------------------------------------------------------------------------------
+# Basic command existence tests
+#-------------------------------------------------------------------------------
+
+test ssh2-commands-1.0 {ssh::import command exists} -body {
+    llength [info commands ssh::import]
+} -result {1}
+
+test ssh2-commands-1.1 {ssh::authenticate command exists} -body {
+    llength [info commands ssh::authenticate]
+} -result {1}
+
+#-------------------------------------------------------------------------------
+# Error handling tests (no server required)
+#-------------------------------------------------------------------------------
+
+test ssh2-import-1.0 {ssh::import with no arguments} -body {
+    ssh::import
+} -returnCodes error -match glob -result {*}
+
+test ssh2-import-1.1 {ssh::import with invalid channel} -body {
+    ssh::import nosuchchannel
+} -returnCodes error -match glob -result {*}
+
+test ssh2-authenticate-1.0 {ssh::authenticate with no arguments} -body {
+    ssh::authenticate
+} -returnCodes error -match glob -result {*}
+
+test ssh2-authenticate-1.1 {ssh::authenticate with invalid channel} -body {
+    ssh::authenticate nosuchchannel test test
+} -returnCodes error -match glob -result {*}
+
+#-------------------------------------------------------------------------------
+# Channel option tests (would require actual SSH connection)
+# These are skipped unless TEST_SSH_SERVER environment variable is set
+#-------------------------------------------------------------------------------
+
+# Note: Integration tests requiring a real SSH server should be in a separate
+# test file (e.g., integration.test) and only run when explicitly enabled
+
+#-------------------------------------------------------------------------------
+# Cleanup
+#-------------------------------------------------------------------------------
+
+::tcltest::cleanupTests
+return

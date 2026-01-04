@@ -1,0 +1,31 @@
+# TEA build artifacts
+configure
+config.status
+config.log
+config.cache
+config.h
+autom4te.cache/
+Makefile
+pkgIndex.tcl
+
+# Compiled files
+*.o
+*.obj
+*.so
+*.dll
+*.dylib
+*.a
+*.lib
+*.exp
+*.ilk
+*.pdb
+
+# Backup files
+*~
+*.old
+*.bak
+
+# Editor files
+*.swp
+.gse
+.origin

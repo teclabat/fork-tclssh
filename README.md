@@ -278,18 +278,18 @@ tclssh2 uses Tcl's stacked channel architecture:
 
 ```
 +-------------------------+
-¦   Tcl Application       ¦
-¦   (gets/puts/read)      ¦
+Â¦   Tcl Application       Â¦
+Â¦   (gets/puts/read)      Â¦
 +-------------------------+
-            ¦
+            Â¦
 +-----------?-------------+
-¦   SSH Channel Layer     ¦
-¦   (encryption/protocol) ¦
+Â¦   SSH Channel Layer     Â¦
+Â¦   (encryption/protocol) Â¦
 +-------------------------+
-            ¦
+            Â¦
 +-----------?-------------+
-¦   TCP Socket Channel    ¦
-¦   (network I/O)         ¦
+Â¦   TCP Socket Channel    Â¦
+Â¦   (network I/O)         Â¦
 +-------------------------+
 ```
 
@@ -566,9 +566,7 @@ This is a work-in-progress project. Contributions are welcome, particularly for:
 
 ## Authors
 
-Based on original work at https://github.com/teclabat
-
-Current development: 2025
+Based on original work at http://chiselapp.com/user/aspect/repository/tcl-extensions
 
 ## License
 
